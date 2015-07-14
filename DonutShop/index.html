@@ -41,57 +41,27 @@ Code Samples; javascriptbook.com      One of many books available
 <html>
   <head>
     <title>Donut Shops</title>
+
+	<script src="js/DonutShop.js"></script>
+	<script src="js/Addresses.js"></script>
+	<script src="js/DonutsRUs.js"></script>
   </head>
  
   <body>
  <script>
 	  
-	  var donutArray = [["Downtown", 8, 43, 4.5, 12],["Capitol Hill", 4, 37, 2, 8],["South Lake Union", 9, 23, 6.33, 12],["Wedgewood", 2, 28, 1.25, 6],["Ballard", 8, 58, 3.75, 24]];
-          // Class 'DonutShop()'
-	  var DonutShop = function( location, minCust, maxCust, avgDonutCust, operatingHours ) {
-		  
-		  this.location = location;
-		  this.minCust = minCust;
-		  this.maxCust = maxCust;
-		  this.avgDonutCust = avgDonutCust;
-		  this.operatingHours = operatingHours;
-		  
-		  this.getLocation = function() {
-			  return this.location;
-		  }
-		  this.setLocation = function( location ) {
-			  this.location = location;
-		  }
-		  
-		  this.getMinCust = function() {
-			  return this.minCust;
-		  }
-		  this.SetMinCust = function(minCust) {
-			  this.minCust = minCust;
-		  }
-		  
-		  this.custPerHourCalc = function() {
-			  return Math.floor(Math.random() * (maxCust - minCust) + minCust);
-		  }
-		  
-		  this.custPerHour =  this.custPerHourCalc();
-		  
-		  this.donutsPerDay = function() {
-			  return (avgDonutCust * this.custPerHour * operatingHours);
-		  }
-	  }
-	  
+
+	 
 	  window.onload = function() {
-		  var myTr = document.getElementById("tableContent");
-		  var finalList = [];
-		  for (var i = 0; i < donutArray.length; i++) {
-			  var thisShop = new DonutShop( donutArray[i][0],donutArray[i][1],donutArray[i][2],donutArray[i][3],donutArray[i][4]);
-			  
-			  finalList.push("<tr><td>" + thisShop.location + "</td> <td>" + thisShop.minCust + "</td><td>" + thisShop.maxCust + "</td><td>" + thisShop.avgDonutCust + "</td><td>" + thisShop.operatingHours + "</td><td>" + thisShop.custPerHour + "</td><td>" + thisShop.donutsPerDay() + "</td></tr>");
-		  }
-		  myTr.innerHTML = finalList.join("");
+//	  	var myTr = document.getElementById("tableContent");
+//	  	var finalList = [];
+//	  	for (var i = 0; i < donutArray.length; i++) {
+//	  		var thisShop = new DonutShop( donutArray[i][0],donutArray[i][1],donutArray[i][2],donutArray[i][3],donutArray[i][4],donutArray[i][5]);
+//	  		finalList.push("<tr><td>" + thisShop.location + "</td> <td>" + thisShop.minCust + "</td><td>" + thisShop.maxCust + "</td><td>" + thisShop.avgDonutCust + "</td><td>" + thisShop.operatingHours + "</td><td>" + thisShop.custPerHour + "</td><td>" + thisShop.donutsPerDay() + "</td></tr>");
+//	  	}
+//	  	myTr.innerHTML = finalList.join("");
+DonutsRUs.allShops;
 	  };
-		 
 		 
     </script>
       <table style="text-align: center;">
@@ -109,6 +79,7 @@ Code Samples; javascriptbook.com      One of many books available
       <tbody id="tableContent">
       </tbody>
     </table>
+	<script src="js/view.js"></script>
     </body>
 </html>
 
