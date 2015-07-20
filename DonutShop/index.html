@@ -1,43 +1,69 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Donut Shops</title>
-
+<head>
+	<title>Donut Shops</title>
+	<style>
+	h1 { margin: 5px 0;}
+	h2 {margin: 2px 0;}
+	table {
+		margin-top: 20px;
+		border-spacing: 0;
+		border-collapse: collapse;
+	}
+	td:first-child {text-align: left;}
+	table > tbody > tr > td {
+	  padding: 8px;
+	  line-height: 1.42857143;
+	  vertical-align: top;
+	  border: 1px solid #ddd;
+	}
+	table>thead>tr>th {
+	  border: 1px solid #ddd;
+	}
+	</style>
 	<script src="js/DonutShop.js"></script>
 	<script src="js/Addresses.js"></script>
 	<script src="js/DonutData.js"></script>
 	<script src="js/DonutCorp.js"></script>
-  </head>
- 
-  <body>
- <script>
-	  
-
-	  var data = new DonutData();
-	  data.createStores();
-	  
-	  window.onload = function() {
-	  	var myTr = document.getElementById("tableContent");
-	  	myTr.innerHTML = completedArray.join("");
-	  };
-		 
-    </script>
-      <table style="text-align: center;">
-      <thead>
-        <tr>
-          <th>Location</th>
-		  <th>Minimum Customers per Hour</th>
-		  <th>Maximum Customers per Hour</th>
-		  <th>Average Donuts per Customer</th>
-		  <th>Hours of Operation</th>
-          <th>Customers Per Hour (random subset)</th>
-          <th>Total Donuts Per Day</th>
-        </tr>
-      </thead>
-      <tbody id="tableContent">
-      </tbody>
-    </table>
-    </body>
+</head>
+<body>
+	<script>
+	
+	var data = new DonutData();
+	data.createStores();
+	
+	var donutCorp = new DonutCorp();
+	
+	window.onload = function() {
+		var myTr = document.getElementById("tableContent");
+		myTr.innerHTML = completedArray.join("");
+	};
+	
+	</script>
+	<div id="corp">
+		<h1>Donuts-R-Us</h1>
+		<h2>
+			<script>
+			donutCorp.displayAddress();
+			</script>
+		</h2>
+	</div>
+	<table style="text-align: center;">
+		<thead>
+			<tr>
+				<th>Location</th>
+				<th>Minimum Customers per Hour</th>
+				<th>Maximum Customers per Hour</th>
+				<th>Average Donuts per Customer</th>
+				<th>Hours of Operation</th>
+				<th>Customers Per Hour (random subset)</th>
+				<th>Total Donuts Per Day</th>
+			</tr>
+		</thead>
+		<tbody id="tableContent">
+		</tbody>
+	</table>
+</body>
 </html>
 
 
