@@ -1,5 +1,3 @@
-var donutArray = [[1, "Downtown", 8, 43, 4.5, 12],[2, "Capitol Hill", 4, 37, 2, 8],[3, "South Lake Union", 9, 23, 6.33, 12],[4, "Wedgewood", 2, 28, 1.25, 6],[5, "Ballard", 8, 58, 3.75, 24]];
-    // Class 'DonutShop()'
 var DonutShop = function( storeId, location, minCust, maxCust, avgDonutCust, operatingHours ) {
 	
 	this.storeId = storeId;

@@ -1,66 +1,24 @@
 <!DOCTYPE html>
-<!--
-
-Data for five donut shops...
- location,      minimum customers/hr, maximum customers/hr, and donuts/customer 
-
-Downtown            8   		43     				4.50
-Capitol Hill        4   		37     				2.00
-South Lake Union    9   		23      			6.33
-Wedgewood           2   		28      			1.25
-Ballard             8   		58      			3.75
-
-I have setup a simple version of the DonutShop class w/ only 1 value, the 'location' variable
-and a getter() & setter() method for 'location'. And i use the 'getLocation()' method to fill in the 
-location value for the Downtown shop. See [1].
-
-ToDo:
- 1) Finish setting up the 'DonutShop' class, so you can get and set the values for
-     minimun customer/hr
-     maximum customer/hr
-     average # of donuts purchased/customer
-     (Use the values in the table above.)
- 2) Finish replacing the hardcoded values w/ calls for the appropriate data from the correct 'DonutShop' object
-    you created for a particular shop.
-
-Then...
- 3) Add an 'hours of operation' field (Your choice of value)
- 4) Add a 'customers/hr' field 
- 4) Add a method than will calculate a random number of customers per hour, using the max and min customer/hr values for
-    the shop you are processing. Store results in the 'customers/hr' field.
- 5) Add a 'donuts/day' field
- 6) Calculate the 'donuts/day' using the hours, customers/hr, and donuts/customer values.
- 7) Add all of the new values to your table, w/ appropriate headers.
-
-Feel free to add a CSS
-
-Code Samples; javascriptbook.com      One of many books available
------------------------------------------------------------------------------------------
--->
-
 <html>
   <head>
     <title>Donut Shops</title>
 
 	<script src="js/DonutShop.js"></script>
 	<script src="js/Addresses.js"></script>
-	<script src="js/DonutsRUs.js"></script>
+	<script src="js/DonutData.js"></script>
+	<script src="js/DonutCorp.js"></script>
   </head>
  
   <body>
  <script>
 	  
 
-	 
+	  var data = new DonutData();
+	  data.createStores();
+	  
 	  window.onload = function() {
-//	  	var myTr = document.getElementById("tableContent");
-//	  	var finalList = [];
-//	  	for (var i = 0; i < donutArray.length; i++) {
-//	  		var thisShop = new DonutShop( donutArray[i][0],donutArray[i][1],donutArray[i][2],donutArray[i][3],donutArray[i][4],donutArray[i][5]);
-//	  		finalList.push("<tr><td>" + thisShop.location + "</td> <td>" + thisShop.minCust + "</td><td>" + thisShop.maxCust + "</td><td>" + thisShop.avgDonutCust + "</td><td>" + thisShop.operatingHours + "</td><td>" + thisShop.custPerHour + "</td><td>" + thisShop.donutsPerDay() + "</td></tr>");
-//	  	}
-//	  	myTr.innerHTML = finalList.join("");
-DonutsRUs.allShops;
+	  	var myTr = document.getElementById("tableContent");
+	  	myTr.innerHTML = completedArray.join("");
 	  };
 		 
     </script>
@@ -79,7 +37,6 @@ DonutsRUs.allShops;
       <tbody id="tableContent">
       </tbody>
     </table>
-	<script src="js/view.js"></script>
     </body>
 </html>
 
