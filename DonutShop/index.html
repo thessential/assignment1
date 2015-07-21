@@ -38,6 +38,10 @@
 		var myTr = document.getElementById("tableContent");
 		myTr.innerHTML = completedArray.join("");
 		donutCorp.displayAddress();
+		
+		var storeList = document.getElementById("storeList")
+		donutCorp.storeList();
+		storeList.innerHTML = finalStoreListArray.join("");
 	};
 	
 	</script>
@@ -60,6 +64,8 @@
 		<tbody id="tableContent">
 		</tbody>
 	</table>
+	<div id="storeList">
+	</div>
 </body>
 </html>
 
