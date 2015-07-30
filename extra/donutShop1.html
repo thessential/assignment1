@@ -1,0 +1,107 @@
+<DOCTYPE text/html>
+<!--
+
+Data for five donut shops...
+ location,      minimum customers/hr, maximum customers/hr, and donuts/customer 
+
+Downtown            8   		43     				4.50
+Capitol Hill        4   		37     				2.00
+South Lake Union    9   		23      			6.33
+Wedgewood           2   		28      			1.25
+Ballard             8   		58      			3.75
+
+I have setup a simple version of the DonutShop class w/ only 1 value, the 'location' variable
+and a getter() & setter() method for 'location'. And i use the 'getLocation()' method to fill in the 
+location value for the Downtown shop. See [1].
+
+ToDo:
+ 1) Finish setting up the 'DonutShop' class, so you can get and set the values for
+     minimun customer/hr
+     maximum customer/hr
+     average # of donuts purchased/customer
+     (Use the values in the table above.)
+ 2) Finish replacing the hardcoded values w/ calls for the appropriate data from the correct 'DonutShop' object
+    you created for a particular shop.
+
+Then...
+ 3) Add an 'hours of operation' field (Your choice of value)
+ 4) Add a 'customers/hr' field 
+ 4) Add a method than will calculate a random number of customers per hour, using the max and min customer/hr values for
+    the shop you are processing. Store results in the 'customers/hr' field.
+ 5) Add a 'donuts/day' field
+ 6) Calculate the 'donuts/day' using the hours, customers/hr, and donuts/customer values.
+ 7) Add all of the new values to your table, w/ appropriate headers.
+
+Feel free to add a CSS
+
+Code Samples; javascriptbook.com      One of many books available
+-----------------------------------------------------------------------------------------
+-->
+
+<html>
+  <head>
+    <title>Donut Shops</title>
+  </head>
+ 
+  <body>
+ <script>
+          <!-- Class 'DonutShop()'  -->
+          var DonutShop = function( location ) {
+  
+                  this.location = location;
+  
+                  this.getLocation = function() {
+                          return this.location;
+                  }
+                  this.setLocation = function( location ) {
+                          this.location = location;
+                  }
+          }
+ 
+          <!-- Create a simple 'DonutShop' object, called 'downTown' for our shop in down town Seattle -->
+          var downTown = new DonutShop( "Downtown" );
+ 
+    </script>
+    <figure>
+      <!-- <img src = "donut image.jpeg"/> -->
+    <table>
+      <thead>
+        <tr>
+          <th>Location</th>
+          <th>Average Donuts Per Hour</th>
+          <th>Total Donuts Per Day</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+	  <!-- [1]  -->
+          <script>document.write("<td>" +  downTown.getLocation() + "</td>"); </script>
+          <td>85</td>
+          <td>680</td>
+        </tr>
+        <tr>
+          <td>Capitol Hill</td>
+          <td>12</td>
+          <td>288</td>
+        </tr>
+        <tr>
+          <td>South Lake Union</td>
+          <td>88</td>
+          <td>880</td>
+        </tr>
+        <tr>
+          <td>Wedgewood</td>
+          <td>33</td>
+          <td>330</td>
+        </tr>
+        <tr>
+          <td>Ballard</td>
+          <td>210</td>
+          <td>2100</td>
+        </tr>
+      </tbody>
+    </table>
+    </body>
+</html>
+
+
