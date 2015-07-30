@@ -1,17 +1,16 @@
-
 var Address = function() {
-
+    "use strict";
     this.name     = "" ;
     this.street   = "" ;
     this.city     = "" ;
     this.state    = "" ;
     this.zipCode  = "" ;
 
-    this.setName  = function( name ) {
-	this.name = name;
+    this.setName  = function (name) {
+        this.name = name;
     };
- 
-    this.getName  = function() {
+
+    this.getName  = function () {
 	return this.name;
     };
     
