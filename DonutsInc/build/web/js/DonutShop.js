@@ -175,6 +175,27 @@ var DonutShop = function( shopId, location, minCust, maxCust, avgDonutCust, oper
                     "</form>" ;
                 break;
                 
+        case 'F':
+        // (E) Use 'Address' class
+            var id    = donutShop.getShopId() ; 
+            var hours = donutShop.operatingHours ;
+            rowData = "" +
+                    "<tr><td>" + donutShop.getAddress()   + "</td>" +
+                        "<td>SHOP-0" + id                 + "</td>" +           // Added 'shopId'
+                        "<td>" + donutShop.minCust        + "</td>" +
+                        "<td>" + donutShop.maxCust        + "</td>" +
+                        "<td>" + donutShop.avgDonutCust.toFixed(1)   + "</td>" +
+                        "<td><input type='text' size=2 min='1' max='24' " +
+                                  " value='" + hours + "' " +
+                                  " name='hours" + id + "' " +
+                                  " onchange='changeHours( this.value, " + id + " )'" +
+                                 "'></td>" +
+                        "<td>" + donutShop.custPerHour    + "</td>" +
+                        "<td>" + donutShop.donutsPerDay().toFixed(0) + "</td>" +
+                    "</tr>" +
+                    "" ;
+                break;
+                
         default:
         	rowData = "<tr><td>Not sure which table you would like to display?</td></tr>";
         	break;

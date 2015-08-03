@@ -3,33 +3,34 @@
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
+
+    http://datatables.net/examples/basic_init/zero_configuration.html
 -->
+
 <html>
     <head>
-        <title>Data Tables</title>
-        
-        <script type="text/javascript"  src="js/libs/DataTables-1.10.7/media/css/jquery.dataTables.css"></script>
-    <!-- <script type="text/javascript"  src="js/libs/DataTables-1.10.7/media/css/jquery.dataTables.min.css"></script>
-    //code.jquery.com/jquery-1.11.1.min.js
-    //cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js
-    -->
-    
-        <script type="text/javascript"  src="js/libs/DataTables-1.10.7/media/js/jquery.js"></script>
-        <script type="text/javascript"  src="js/libs/DataTables-1.10.7/media/js/jquery.dataTables.js"></script>
-        <script type="text/javascript"  src="js/libs/DataTables-1.10.7/media/js/jquery.dataTables.min.js"></script>
-       
+        <title>DataTables Plugin</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
+<!--        <script src="http://cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css"></script> 
+            <script src="http://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>-->
+        
+        <script src="./css/dataTable.css"></script>
+        <script type="text/javascript" language="javascript" src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" language="javascript" src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.css">
+        
+        <script type="text/javascript" class="init">
+        $(document).ready(function() {
+            $('#example').DataTable();
+        } );
+        </script> 
     </head>
+           
     <body>
-        <div>Data Tables</div>
-         <script>
-     
-        $(document).ready( function() {
-            $('#myTable').DataTable();
-        });
-
-        </script>
+        
+        
         <table id="example" class="display" cellspacing="0" width="100%">
         <thead>
             <tr>
@@ -512,5 +513,9 @@ and open the template in the editor.
             </tr>
         </tbody>
     </table>
+
     </body>
+    
 </html>
+
+
