@@ -1,3 +1,102 @@
-{
-    "name": "Gru"
-}
+
+{ "web-app" : {
+    "comment01" : "// This file is set-up to replace the data arrays in the 'DonutData' class.  This file",
+    "comment02" : "// will need to be parsed and used to replace the 'hard-coded' data. Make the appropriate",
+    "comment03" : "// changes to the 'DonutData' class. ",
+    "comment04" : "// -----------------------------------------------------------------------------------",
+    "corporation": [
+    {    
+        "corpName" : "DonutsInc",
+        "address" : 
+                {
+                "name" : "Corporate Offices",
+                "street" : "1254 1st Avenue",
+                "city" : "Seattle",
+                "state" : "Washington",
+                "shortState" : "WA",
+                "zipCode" : "90101"
+                },
+        "shops" : [
+                {
+                "id" : "001",
+                "address" :
+                        {
+                        "name" : "Downtown",
+                        "street" : "500 5th Avenue",
+                        "city" : "Seattle",
+                        "state" : "Washington",
+                        "shortState" : "WA",
+                        "zipCode" : "91100"  
+                        },
+                "minCustomerPerHour" : 8,
+                "maxCustomerPerHour" : 43,
+                "averageDonutsPerCustomer" : 4.5,
+                "hoursOfOperation" : 12
+                },
+                {
+                "id" : "002",
+                "address" :
+                        {
+                        "name" : "Capitol Hill",
+                        "street" : "1500 Broadway",
+                        "city" : "Seattle",
+                        "state" : "Washington",
+                        "shortState" : "WA",
+                        "zipCode" : "91200"  
+                        },
+                "minCustomerPerHour" : 4,
+                "maxCustomerPerHour" : 37,
+                "averageDonutsPerCustomer" : 2,
+                "hoursOfOperation" : 8
+                },
+                {
+                "id" : "003",
+                "address" :
+                        {
+                        "name" : "South Lake Union",
+                        "street" : "150 Terry Street",
+                        "city" : "Seattle",
+                        "state" : "Washington",
+                        "shortState" : "WA",
+                        "zipCode" : "91300"  
+                        },
+                "minCustomerPerHour" : 9,
+                "maxCustomerPerHour" : 23,
+                "averageDonutsPerCustomer" : 6.33,
+                "hoursOfOperation" : 12
+                },
+                {
+                "id" : "004",
+                "address" :
+                        {
+                        "name" : "Green Lake",
+                        "street" : "45th Street",
+                        "city" : "Seattle",
+                        "state" : "Washington",
+                        "shortState" : "WA",
+                        "zipCode" : "91400"  
+                        },
+                "minCustomerPerHour" : 2,
+                "maxCustomerPerHour" : 28,
+                "averageDonutsPerCustomer" : 1.25,
+                "hoursOfOperation" : 6
+                },
+                {
+                "id" : "005",
+                "address" :
+                        {
+                        "name" : "Ballard",
+                        "street" : "2500 Market Street",
+                        "city" : "Seattle",
+                        "state" : "Washington",
+                        "shortState" : "WA",
+                        "zipCode" : "91500"  
+                        },
+                "minCustomerPerHour" : 8,
+                "maxCustomerPerHour" : 58,
+                "averageDonutsPerCustomer" : 3.75,
+                "hoursOfOperation" : 24
+                }
+            ]
+    }   ]
+} }
