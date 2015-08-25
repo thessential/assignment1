@@ -1,5 +1,6 @@
-
-
+/*
+ * @Object( DonutData )
+ */
 var DonutData = function() {
 
    this.donutArray0 = [

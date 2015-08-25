@@ -1,9 +1,36 @@
-
+/*
+ * @Object( DonutCorp )
+ */
 var DonutCorp = function() {
 
-    this.shopId   = 0;
-    this.address  = new Address();
-    this.shopList = [] ;      
+    this.shopId     = 0;
+    this.address    = new Address();
+    this.shopList   = [] ;          // Future: Create a Shops class to keep track of all of the 'Shop' objects.  
+    this.employees  = [] ;          // Future: Create a Employees class to keep track of all of the 'Employee' objects.
+    
+    /*
+     * The difference between the addEmployee(), updateEmployee() and deleteEmployee()
+     * methods in this class, DonutCorp(), and the three methods by the same name in the
+     * 'Employee' class are.... we are adding, updating or deleting an 'Employee'
+     * object from the 'employees' array.
+     * 
+     * The creation and editing of an 'Employee' object should happen in the 
+     * 'Employee' class.
+     * 
+     * @param Employee employee
+     * @returns {undefined}
+     */
+    this.addEmployee = function( employee ) {
+        this.employees.push(employee);
+    };
+    
+    this.updateEmployee = function( employee ) {
+        
+    };
+    
+    this.deleteEmployee = function( employee ) {
+        
+    };
     
     this.addShop  = function( donutShop ) {
 	donutShop.setShopId( this.getNextShopId() );
@@ -16,16 +43,36 @@ var DonutCorp = function() {
         for ( var i=0; i<this.shopList.length; i++ ) {
             var aShop = this.shopList[i];
             if ( aShop.getShopId() === updateShopId ) {
-                this.shopList[i] = donutShop ;  
+                this.shopList[i] = donutShop ; 
+                return true;
             };
         };
         // this.shopList.push( donutShop );
+    };
+    
+    /*
+     * Code sample from 'Javascript | MDN',  Array
+     * var fruits      = ["Strawberry", "Banana", "Mango"];
+     * var pos         = fruits.indexOf("Banana");
+     * var removedItem = fruits.splice(pos, 1); // this is how to remove an item
+     * ["Strawberry", "Mango"]
+     */
+    this.deleteShop = function( donutShop ) {
+        var deleteShopId = donutShop.getShopId();
+        
+        for ( var index=0; i<this.shopList.length; index++ ) {
+            var aShop = this.shopList[index];
+            if ( aShop.getShopId() === updateShopId ) {
+                this.shopList.splice( index, 1 );
+                return true;
+            };
+        };
     };
 
     this.getShopCount = function() {
         var length    = this.shopList.length;
         return length;
-    }
+    };
     
     this.getNextShopId = function() {
         this.shopId++;
@@ -47,7 +94,7 @@ var DonutCorp = function() {
                 return shop;
             }
         }
-    }
+    };
     
     this.processChange  = function( type, value, id ) {
         

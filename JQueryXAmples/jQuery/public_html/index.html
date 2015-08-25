@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>ProtoTypes</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+        html {
+            font-family: Avenir;
+        }
+        body {
+          background-color: #d0e4fe;
+        }
+        table {
+          border-collapse: collapse;
+        }
+        thead, th, td  {
+          font-family: Avenir;
+          border: 1px solid black;
+          text-align: center;
+          padding: 5px;
+        } 
+        </style>
+    </head>
+    
+    <body>
+    <header>Header</header>
+    <nav>NAV</nav>
+    <article>Article</article>
+    <aside>Aside</aside>
+    <section>
+        <h3>Working thru the Udemy Course: Learning 200 jQuery Functions with 800 Examples</h3>
+        <table>
+            <thead>
+                <th>Lectures</th>
+                <th>Title</th>
+            </thead>
+            <tr>
+                <td><b>Lecture 2:</b> In-line External Scripting</td>
+                <td> <a href="./lectures/s001.html">Hide</a> </td>
+            </tr>
+        </table>
+    </section>
+    <section>
+        <h3>Cool Stuff</h3>
+        <table>
+            <thead>
+                <th>Link</th>
+                <th>Title</th>
+            </thead>
+            <tr>
+                <td> <a href="http://codepen.io/Hornebom/pen/WvWzgx">http://codepen.io/Hornebom/pen/WvWzgx</a> </td>
+                <td> <a href="bullgit.html">Bullgit</a> </td>
+            </tr>
+        </table>
+    </section>
+    <section>
+        <script>
+            
+            // js by http://codepen.io/Haroenv/
+            var cards = document.getElementsByClassName("cards");
+            var word, i, j;
+            for (i = cards.length - 1; i >= 0; i--) {
+                word = cards[i].innerHTML;
+                cards[i].innerHTML = "";
+                for (j = 0; j < word.length; j++) {
+                    cards[i].innerHTML += "<span class='card' title='" + word.charAt(j) + "'>" + word.charAt(j) + "</span>";
+                };
+            };
+
+        </script>
+        <a href="http://bullg.it/" class="veryImportantLink">bullg.it == DADA Code</a>
+            <div class="box">
+                <h1 class="cards">bullgit</h1>
+            </div>
+    </section>
+    </body>
+</html>

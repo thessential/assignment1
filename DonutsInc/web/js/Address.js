@@ -1,3 +1,6 @@
+/*
+ * @Object( Address )
+ */
 var Address = function() {
     "use strict";
     this.name     = "" ;

@@ -1,5 +1,8 @@
+/*
+ * @Object( DonutShop )
+ */
 var DonutShop = function() {
-    alert( "Empty 'DonutShop'. " );
+    alert( "Empty 'DonutShop'. Try DonutShop( shopId, location, minCust, maxCust, avgDonutCust, operatingHours )" );
 };
 
 var DonutShop = function( shopId, location, minCust, maxCust, avgDonutCust, operatingHours ) {
@@ -28,10 +31,17 @@ var DonutShop = function( shopId, location, minCust, maxCust, avgDonutCust, oper
           this.avgDonutCust   = avgDonutCust;
           this.operatingHours = operatingHours;
           this.shopId	      = shopId;
+          
+          this.testCustPerHour = custPerHour( this.minCust, this.maxCust );
 
           this.hourId         = 0;
     }
       
+      
+  function custPerHour( min, max ) {
+      return Math.floor(Math.random() * (maxCust - minCust) + minCust);
+  };
+  
   this.changeHours = function( hours, id ) {
       alert( "changeHours() hours=" + hours + ", " + "shopId=" + shopId + "" );
       this.operatingHours = hours;
@@ -176,7 +186,7 @@ var DonutShop = function( shopId, location, minCust, maxCust, avgDonutCust, oper
                 break;
                 
         case 'F':
-        // (E) Use 'Address' class
+        // (F) Use to format data for the 'DataTable' jQuery Plug-in
             var id    = donutShop.getShopId() ; 
             var hours = donutShop.operatingHours ;
             rowData = "" +
@@ -192,6 +202,35 @@ var DonutShop = function( shopId, location, minCust, maxCust, avgDonutCust, oper
                                  "'></td>" +
                         "<td>" + donutShop.custPerHour    + "</td>" +
                         "<td>" + donutShop.donutsPerDay().toFixed(0) + "</td>" +
+                    "</tr>" +
+                    "" ;
+                break;
+        
+        case 'G':
+        // (G)  Use to format data for the jQuerySamples.html table display
+            var id    = donutShop.getShopId() ; 
+            var hours = donutShop.operatingHours ;
+            rowData = "" +
+                    "<tr><td>" + donutShop.getAddress()   + "</td>" +
+                        "<td>SHOP-0" + id                 + "</td>" +           // Added 'shopId'
+                        "<td>" + donutShop.minCust        + "</td>" +
+                        "<td>" + donutShop.maxCust        + "</td>" +
+                        "<td>" + donutShop.avgDonutCust.toFixed(1)   + "</td>" +
+                        "<td><input type='text' size=2 min='1' max='24' " +
+                                  " value='" + hours + "' " +
+                                  " name='hours" + id + "' " +
+                                  " onchange='changeHours( this.value, " + id + " )'" +
+                                 "'></td>" +
+                        "<td>" + donutShop.custPerHour    + "</td>" +
+                        "<td>" + donutShop.donutsPerDay().toFixed(0) + "</td>" +
+//                        "<td>" + "</td>" +
+                        "<td width='200'>" + "<input type='image' src='icons/Pencil_24px.png' " +
+                                  " onclick='editDonutShop(" + id + ")'" +
+                                 "'>" +
+                                 "<input type='image' src='icons/Remove_24px.png' " +
+                                  " onclick='removeDonutShop(" + id + ")'" +
+                                 "'>" +
+                        "</td>" +
                     "</tr>" +
                     "" ;
                 break;

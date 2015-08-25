@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <title>Lecture 2: jQuery Example</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div id="message" style="display: none;">Welcome to this demo!<div>
+        <!-- (1) This is in-line functionality, using the jQuery 'hide()' function  -->
+        <p onclick="$(this).hide();">This is a paragraph. Click to make it disappear</p>
+        <!-- (2) External equivalent                                                -->
+        <p id="paragraph">This a paragraph.</p>
+        <!-- (2) How do we make it re-appear?                                       -->
+        <script type="text/javascript" src="../js/libs/jquery/jquery.js"></script>
+        <script type="text/javascript" src="../js/hide.js"></script>
+    </body>
+</html>

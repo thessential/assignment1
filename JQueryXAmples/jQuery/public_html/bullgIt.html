@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Demo: Swinging Letters</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script type="text/css"        src="css/bullgit.css"></script>
+
+    </head>
+    <body>
+        <script>
+//            $(document).ready( function() {
+//
+//                //Prepare the awesomeness
+//                function bullgit() {
+//                    var $body = $('body');
+//                    $body.html('<iframe src="http://bullg.it" width="150" height="150" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0"></iframe>');
+//                    
+                    var cards = document.getElementsByClassName("cards");
+                    var word, i, j;
+                    for (i = cards.length - 1; i >= 0; i--) {
+                        word = cards[i].innerHTML;
+                        cards[i].innerHTML = "";
+                        for (j = 0; j < word.length; j++) {
+                            cards[i].innerHTML += "<span class='card' title='" + word.charAt(j) + "'>" + word.charAt(j) + "</span>";
+                        };
+                    };            
+//                };
+//
+//                //Launch the awesomeness
+//                bullgit();
+//            });
+            
+            // js by http://codepen.io/Haroenv/
+            
+            
+        </script>
+        <a href="http://bullg.it/" class="veryImportantLink">bullg.it == DADA Code</a>
+        <div class="box">
+          <h1 class="cards">abcdef</h1>
+        </div>
+    </body>
+    
+</html>

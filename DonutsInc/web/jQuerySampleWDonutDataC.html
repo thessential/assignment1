@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>jQuery UI Dialog for DonutShop() - Modal form</title>
+        <link   rel="stylesheet" 
+               href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <link   rel="stylesheet" 
+               href="/resources/demos/style.css">
+
+        <script type="text/javascript" src="js/DonutCorp.js"></script>
+        <script type="text/javascript" src="js/DonutData.js"></script>
+        <script type="text/javascript" src="js/DonutShop.js"></script>
+        <script type="text/javascript" src="js/Address.js"></script>
+    
+    <style>
+        body { font-size: 62.5%; }
+        label, input { display:block; }
+        input.text {  // margin-bottom:12px; 
+                      width:95%; 
+                      padding: .4em; }
+        fieldset { padding:0; border:0; margin-top:25px; }
+        h1 { font-size: 1.2em; margin: .6em 0; }
+        div#users-contain { width: 350px; margin: 25px 0; }
+        div#users-contain table { margin: 1em 0; border-collapse: collapse; width: 100%; }
+        div#users-contain table td, div#users-contain table th { 
+                                                    font-family: Avenir Next; 
+                                                    border: 1px solid #eee;
+                                                    padding: .6em 25px; 
+                                                    text-align: center;
+                                                    margin-left: 100px;
+                                                }
+        .ui-dialog .ui-state-error { padding: .3em; }
+/*      .ui-widget-header { padding: .99em; }*/
+        .validateTips { border: 1px solid transparent; padding: 0.3em; }
+        
+        // My additions...
+/*        table, th, td  {
+            border: 1px solid black;
+            text-align: center;
+            padding: 25px;
+        }*/
+    </style>
+    
+    <script>
+        var allFields;
+        var emailRegex;
+        var email;
+        var password;
+        var name;
+        var tips;
+        $(function() {
+            var dialog, form;
+            // From http://www.whatwg.org/specs/web-apps/current-work/multipage/states-of-the-type-attribute.html#e-mail-state-%28type=email%29
+                emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/ ;
+                name = $( "#name" );
+                email = $( "#email" );
+                password = $( "#password" );
+                allFields = $( [] ).add( name ).add( email ).add( password );
+            
+                tips = $( ".validateTips" );
+            
+            function checkLength( o, n, min, max ) {
+                if ( o.val().length > max || o.val().length < min ) {
+                    o.addClass( "ui-state-error" );
+                    updateTips( "Length of " + n + " must be between " +
+                        min + " and " + max + "." );
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+            
+            dialog = $( "#dialog-form" ).dialog( {
+                autoOpen : false,
+                height : 300,
+                width : 350,
+                modal : true,
+                buttons : {
+                    "Create an 'DonutShop" : addANewDonutShop,
+                     Cancel : function() {
+                         dialog.dialog( "close" );
+                    }
+                },
+                close : function() {
+                    form[ 0 ].reset();
+                    allFields.removeClass( "ui-state-error" );
+                }
+            });
+    
+        });
+        
+        this.donutData  = new DonutData();
+        this.donutCorp  = new DonutCorp();
+        
+        this.myFunction = function() {
+	          
+	    this.donutArray = donutData.getData(); 
+                  
+            var myTryG      = document.getElementById( "tableContentG" );
+            
+            var rowData     = [] ;
+            var shopCount   = donutArray.length;
+            var total       = 0 ;
+
+            for (var i = 0; i < shopCount; i++) {
+                // Create a 'donut shop'. 
+		var aShop = new DonutShop(  i,                  // shopId
+                                            donutArray[i][0],   // LOCATION: name, street, city, state, zip code
+                                            donutArray[i][1],   // min cust/hour
+                                            donutArray[i][2],   // max cust/hour
+                                            donutArray[i][3],   // avg donuts/cust
+                                            donutArray[i][4] ); // hours
+			  
+                // Add the new shop to the corprate shop list.
+                donutCorp.addShop( aShop );
+
+		rowData.push( aShop.printData( 'G', aShop ) );
+                
+                total    = total + aShop.donutsPerDay();
+            }
+            rowData.push( "<tr>" +
+                                "<td></td>" +
+                                "<td></td>" +
+                                "<td></td>" +
+                                "<td></td>" +
+                                "<td></td>" +
+                                "<td></td>" +
+                                "<td></td>" +
+                                "<td><b>Total: " + total.toFixed(0) + "</b></td>" +
+                                "<td>" + "<input type='image' src='icons/Add_24px.png' " +
+                                         " onclick='addANewDonutShop()'" +
+                                         " id='create-user' " +
+                                 "'></td>" +
+                          "</tr>" );
+            
+            myTryG.innerHTML = rowData.join(""); 
+        }; 
+        
+        this.addANewDonutShop = function() {
+            var dialog;
+            var form;
+            var valid = true;
+            
+            //allFields.removeClass( "ui-state-error" );
+
+//            valid = valid && checkLength( name, "username", 3, 16 );
+//            valid = valid && checkLength( email, "email", 6, 80 );
+//            valid = valid && checkLength( password, "password", 5, 16 );
+//
+//            valid = valid && checkRegexp( name, /^[a-z]([0-9a-z_\s])+$/i, "Username may consist of a-z, 0-9, underscores, spaces and must begin with a letter." );
+//            valid = valid && checkRegexp( email, emailRegex, "eg. ui@jquery.com" );
+//            valid = valid && checkRegexp( password, /^([0-9a-zA-Z])+$/, "Password field only allow : a-z 0-9" );
+
+            if ( valid ) {
+                    $( "#users tbody" ).append( "<tr>" +
+                      "<td>" + name.val() + "</td>" +
+                      "<td>" + email.val() + "</td>" +
+                      "<td>" + password.val() + "</td>" +
+                    "</tr>" );
+                    dialog.dialog( "close" );
+                };
+                return valid;
+            };
+            
+            alert("Let's add a new DonutShop() ! ");
+            
+            dialog = $( "#dialog-form" ).dialog( {
+                autoOpen : false,
+                height : 300,
+                width : 350,
+                modal : true,
+                buttons : {
+                    "Create an 'DonutShop" : addANewDonutShop,
+                     Cancel : function() {
+                         dialog.dialog( "close" );
+                    }
+                },
+                close : function() {
+                    form[ 0 ].reset();
+                    allFields.removeClass( "ui-state-error" );
+                }
+            });
+        
+        this.removeDonutShop = function( id ) {
+            alert("Someone wants to DELETE Shop-0" + id + "" );
+        };
+        
+        this.editDonutShop = function( id ) {
+            alert("Someone wants to EDIT Shop-0" + id + "" );
+        };
+        
+    </script>
+        
+    </head>
+<!--    <input type="image" src="icons/Add_60px.png" onclick="addANewDonutShop()"/>-->
+    
+    <body onload="myFunction()" >
+        
+        <div id="users-contain" class="ui-widget">
+            <h1>Donuts Incorporated: Donut Shop List</h1>
+            <table id="users" class="ui-widget ui-widget-content">
+                <thead>
+                    <tr class="ui-widget-header">
+                        <th>Location</th>
+                        <th>Id</th>
+                        <th>Min Cust/<br>Hour</th>
+                        <th>Max Cust/<br>Hour</th>
+                        <th>Avg Donuts/<br>Cust</th>
+                        <th>Hours</th>
+                        <th>Cust/<br>Hour</th>
+                        <th>Total Donuts/<br>Day</th>
+                        <th>Edit/Delete</th>
+                    </tr>
+                </thead>
+                <tbody id="tableContentG">
+                </tbody>
+            </table>
+        </div>
+        
+        <div id="dialog-form" title="Create new user">
+            <p class="validateTips">All form fields are required.</p>
+ 
+            <form>
+                <fieldset>
+                  <label for="name">Name</label>
+                  <input type="text" name="name" id="name" value="Jane Smith" class="text ui-widget-content ui-corner-all">
+                  <label for="email">Email</label>
+                  <input type="text" name="email" id="email" value="jane@smith.com" class="text ui-widget-content ui-corner-all">
+                  <label for="password">Password</label>
+                  <input type="password" name="password" id="password" value="xxxxxxx" class="text ui-widget-content ui-corner-all">
+
+                  <!-- Allow form submission with keyboard without duplicating the dialog button -->
+                  <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+                </fieldset>
+            </form>
+        </div>
+    </body>
+</html>

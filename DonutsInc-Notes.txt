@@ -1,6 +1,10 @@
 
   DonutsInc Project Notes
 
+        2015-08-07 DAK  - Added the 'Employee' class.
+                          Created an 'Employees' array in 'DonutCorp' to keep track of all
+                            of the DonutsInc employees.
+
 	2015-07-24 DAK  - The 'DonutsInc' project was created in NetBeans IDE 8.0.2. As of this date
                           the jQuery libraries are in the project but haven't been used.
                           Files of interest:    index.html

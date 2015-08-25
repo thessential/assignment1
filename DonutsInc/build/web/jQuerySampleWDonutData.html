@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>jQuery UI Dialog for DonutShop() - Modal form</title>
+        <link   rel="stylesheet" 
+               href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <link   rel="stylesheet" 
+               href="/resources/demos/style.css">
+
+        <script type="text/javascript" src="js/DonutCorp.js"></script>
+        <script type="text/javascript" src="js/DonutData.js"></script>
+        <script type="text/javascript" src="js/DonutShop.js"></script>
+        <script type="text/javascript" src="js/Address.js"></script>
+    
+    <style>
+        body { font-size: 62.5%; }
+        label, input { display:block; }
+        input.text {  // margin-bottom:12px; 
+                      width:95%; 
+                      padding: .4em; }
+        fieldset { padding:0; border:0; margin-top:25px; }
+        h1 { font-size: 1.2em; margin: .6em 0; }
+        div#users-contain { width: 350px; margin: 25px 0; }
+        div#users-contain table { margin: 1em 0; border-collapse: collapse; width: 100%; }
+        div#users-contain table td, div#users-contain table th { 
+                                                    font-family: Avenir Next; 
+                                                    border: 1px solid #eee;
+                                                    padding: .6em 25px; 
+                                                    text-align: center;
+                                                    margin-left: 100px;
+                                                }
+        .ui-dialog .ui-state-error { padding: .3em; }
+/*      .ui-widget-header { padding: .99em; }*/
+        .validateTips { border: 1px solid transparent; padding: 0.3em; }
+        
+        // My additions...
+/*        table, th, td  {
+            border: 1px solid black;
+            text-align: center;
+            padding: 25px;
+        }*/
+    </style>
+    <script>
+        $(function() {
+            var dialog, form;
+            
+            var tips = $( ".validateTips" );
+    
+        });
+        
+        this.donutData  = new DonutData();
+        this.donutCorp  = new DonutCorp();
+        
+        this.myFunction = function() {
+	          
+	    this.donutArray = donutData.getData(); 
+                  
+            var myTryG      = document.getElementById( "tableContentG" );
+            
+            var rowData     = [] ;
+            var shopCount   = donutArray.length;
+            var total       = 0 ;
+
+            for (var i = 0; i < shopCount; i++) {
+                // Create a 'donut shop'. 
+		var aShop = new DonutShop(  i,                  // shopId
+                                            donutArray[i][0],   // LOCATION: name, street, city, state, zip code
+                                            donutArray[i][1],   // min cust/hour
+                                            donutArray[i][2],   // max cust/hour
+                                            donutArray[i][3],   // avg donuts/cust
+                                            donutArray[i][4] ); // hours
+			  
+                // Add the new shop to the corprate shop list.
+                donutCorp.addShop( aShop );
+
+		rowData.push( aShop.printData( 'G', aShop ) );
+                
+                total    = total + aShop.donutsPerDay();
+            }
+            rowData.push( "<tr>" +
+                                "<td></td>" +
+                                "<td></td>" +
+                                "<td></td>" +
+                                "<td></td>" +
+                                "<td></td>" +
+                                "<td></td>" +
+                                "<td></td>" +
+                                "<td><b>Total: " + total.toFixed(0) + "</b></td>" +
+                                "<td>" + "<input type='image' src='icons/Add_24px.png' " +
+                                  " onclick='addANewDonutShop()'" +
+                                 "'></td>" +
+                          "</tr>" );
+            
+            myTryG.innerHTML = rowData.join(""); 
+        }; 
+        
+        this.addANewDonutShop = function() {
+            alert("Let's add a new DonutShop() ! ");
+        };
+        
+        this.removeDonutShop = function( id ) {
+            alert("Someone wants to DELETE Shop-0" + id + "" );
+        };
+        
+        this.editDonutShop = function( id ) {
+            alert("Someone wants to EDIT Shop-0" + id + "" );
+        };
+        
+    </script>
+        
+    </head>
+<!--    <input type="image" src="icons/Add_60px.png" onclick="addANewDonutShop()"/>-->
+    
+    <body onload="myFunction()" >
+        
+        <div id="users-contain" class="ui-widget">
+            <h1>Donuts Incorporated: Donut Shop List</h1>
+            <table id="users" class="ui-widget ui-widget-content">
+                <thead>
+                    <tr class="ui-widget-header">
+                        <th>Location</th>
+                        <th>Id</th>
+                        <th>Min Cust/<br>Hour</th>
+                        <th>Max Cust/<br>Hour</th>
+                        <th>Avg Donuts/<br>Cust</th>
+                        <th>Hours</th>
+                        <th>Cust/<br>Hour</th>
+                        <th>Total Donuts/<br>Day</th>
+                        <th>Edit/Delete</th>
+                    </tr>
+                </thead>
+                <tbody id="tableContentG">
+                </tbody>
+            </table>
+        </div>
+<button id="create-user">Create new user</button>
+    </body>
+</html>

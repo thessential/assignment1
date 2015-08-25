@@ -1,0 +1,125 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Aug 17, 2015, 7:59:55 PM
+    Author     : Gru
+*/
+
+    @import url(http://fonts.googleapis.com/css?family=Roboto+Mono:700);
+
+    *, *:before, *:after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+    }
+
+    body {
+      font-family: 'Roboto Mono', monospace;
+      background-color: black;
+      transform-style: preserve-3d;
+      perspective: 100rem;
+      perspective-origin: 50% 50%;
+    }
+
+    .veryImportantLink {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 14px;
+      color: white;
+      text-decoration: none;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      opacity: 0.5;
+      transition: opacity 0.25s;
+
+      &:hover, &:active, &:focus { opacity: 1; }
+    }
+
+    .box {
+      position: relative;
+      top: 5vh;
+      width: 20vw;
+      height: 60vw;
+      margin: 0 auto;
+      transform-style: preserve-3d;
+      transform: translateZ(-50vw);
+    }
+
+    $cards: 7;
+    $dis-z: 3vw;
+    $ani-time: 3s;
+    $swingy: 45deg;
+
+    .cards {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transform: rotateY($swingy);
+      animation: turn ($ani-time * 10) infinite linear;
+    }  
+  
+    .card,
+    .card:before {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+
+    .card {
+      font-size: 0;
+      color: transparent;
+
+      &:before {
+        content: attr(title);
+        padding-top: 150%;
+        text-align: center;
+        font-size: 25vw;
+        color:black; 
+        text-transform: uppercase;
+        background-color: white;
+        box-shadow: 0 0 10vw rgba(black, 0.5);
+        transform-origin: 50% 10%;
+        transform: rotateZ($swingy);
+        animation-name: swing;
+        animation-iteration-count: infinite;
+        animation-timing-function: cubic-bezier(0.385, 0.230, 0.220, 1.180);
+      }    
+    }
+
+    .card:nth-child(even):before {
+      animation-direction: reverse;
+    }
+
+    @for $i from 1 through $cards {
+      .card:nth-child(#{$i}) {
+        z-index: $cards - ($i - 1);
+        transform: translateZ( $i * $dis-z * -1 );
+
+        &:before {
+          animation-duration: $ani-time + (random(10) * 0.1);
+          animation-delay: random(20) * -0.2s;
+        }
+      }
+    }
+
+
+    @keyframes turn {
+      50% { transform: rotateY($swingy * -1); }
+    }
+
+    @keyframes swing {
+      50% { transform: rotateZ($swingy * -1); }
+    }
